@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "mamawallet/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "mamawallet/wsgi.py"
+        }
+    ]
+} 

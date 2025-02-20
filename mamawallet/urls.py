@@ -1,0 +1,30 @@
+"""
+URL configuration for mamawallet project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.1/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from main import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('add-wallet/<int:id>/<str:nama>', views.add_wallet, name='add_wallet'),
+    path('saldo/<int:id>', views.show_saldo, name='show_saldo'),
+    path('edit-saldo/<int:id>/<str:method>/<int:nominal>', views.edit_saldo, name='edit_saldo'),
+    path('transfer/<int:pengirim>/<int:penerima>/<int:nominal>', views.transfer, name='transfer'),
+    path('history/<int:id>', views.history, name='history'),
+    path('clear-database/', views.clear_database, name='clear_database'),
+    path('delete-wallet/<int:id>', views.delete_wallet, name='delete_wallet'),
+]
